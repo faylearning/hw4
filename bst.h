@@ -7,8 +7,6 @@
 #include <utility>
 #include <algorithm>
 
-//DELETE !!
-using namespace std;
 /**
  * A templated class for a Node in a search tree.
  * The getters for parent/left/right are virtual so
@@ -782,7 +780,13 @@ int BinarySearchTree<Key, Value>::balHelper(Node<Key, Value>* curr, bool &bal) c
     if (abs(lheight - rheight) > 1){
         bal = false;
     }
-    return max(lheight, rheight) + 1;
+
+    if (lheight > rheight){
+        return lheight + 1;
+    }else{
+        return rheight + 1;
+    }
+    // return max(lheight, rheight) + 1;
 
 }
 
