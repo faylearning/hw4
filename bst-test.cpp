@@ -11,19 +11,36 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 
-    AVLTree<int, double> bst;
-	bst.insert(std::make_pair(2, 1.0));
-	bst.insert(std::make_pair(3, 1.0));
-	bst.insert(std::make_pair(1, 1.0));
-	bst.insert(std::make_pair(4, 1.0));
-	bst.remove(1);
+    AVLTree<uint16_t, uint16_t> testTree;
+
+	testTree.insert(std::make_pair(5, 8));
+	testTree.insert(std::make_pair(3, 159));
+	testTree.insert(std::make_pair(1, 9));
+	testTree.insert(std::make_pair(3, 0x5a));
+	testTree.insert(std::make_pair(4, 0xb));
+	testTree.insert(std::make_pair(1, 4));
+	testTree.insert(std::make_pair(3, 159));
 
     cout << "\nAVLTree contents:" << endl;
-    for(AVLTree<int,double>::iterator it = bst.begin(); it != bst.end(); ++it) {
+    for(AVLTree<uint16_t,uint16_t>::iterator it = testTree.begin(); it != testTree.end(); ++it) {
         cout << it->first << " " << it->second << endl;
     }
 
-    bst.print();
+
+
+    // AVLTree<int, double> bst;
+	// bst.insert(std::make_pair(2, 1.0));
+	// bst.insert(std::make_pair(3, 1.0));
+	// bst.insert(std::make_pair(1, 1.0));
+	// bst.insert(std::make_pair(4, 1.0));
+	// bst.remove(1);
+
+    // cout << "\nAVLTree contents:" << endl;
+    // for(AVLTree<int,double>::iterator it = bst.begin(); it != bst.end(); ++it) {
+    //     cout << it->first << " " << it->second << endl;
+    // }
+
+    // bst.print();
 
 
 

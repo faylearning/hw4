@@ -8,8 +8,6 @@
 #include <algorithm>
 #include "bst.h"
 
-using namespace std;
-
 struct KeyError { };
 
 /**
@@ -349,22 +347,23 @@ void AVLTree<Key, Value>::insert (const std::pair<const Key, Value> &new_item)
 
     const Key& keyy = new_item.first;
     const Value& val = new_item.second;
-    AVLNode<Key, Value>* n = new AVLNode<Key, Value>(keyy, val, NULL);
+    AVLNode<Key, Value>* n = new AVLNode<Key, Value>(keyy, val, NULL); 
+    // ^^^^^^^ VALGRIND????
 
     //debugging
     // cout << keyy << ", " << val << endl;
 
-    // AVLNode<Key, Value>* RR = new AVLNode<Key, Value>(keyy, val, NULL);
     bool isLeft;
     
     if (this->empty()){
-        this->root_ = new AVLNode<Key, Value>(keyy, val, NULL);
+        this->root_ = n;
         return;
     }else{ //not empty, walk tree
         AVLNode<Key, Value>* curr = (AVLNode<Key, Value>*)this->root_;
         while (true){
             if (curr->getKey() == keyy){
                 curr->setValue(val);
+                delete n;
                 return;
             }else if (curr->getKey() > keyy){
                 if (curr->getLeft() != NULL){
@@ -405,7 +404,7 @@ void AVLTree<Key, Value>::insert (const std::pair<const Key, Value> &new_item)
         }
         insertFix(n->getParent(), n);
     }
-
+    
     return;
 }
 template<class Key, class Value>

@@ -5,7 +5,6 @@
 #include <exception>
 #include <cstdlib>
 #include <utility>
-#include <algorithm>
 
 /**
  * A templated class for a Node in a search tree.
